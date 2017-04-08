@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/yb-bs/Yorbit201-NodeJS/issues"
   },
-  "homepage": "https://github.com/yb-bs/Yorbit201-NodeJS#readme"
+  "homepage": "https://github.com/yb-bs/Yorbit201-NodeJS#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
 }
