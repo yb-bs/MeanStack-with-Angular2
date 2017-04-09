@@ -1,0 +1,11 @@
+html
+	head
+		include partials/head.jade
+	body
+		include partials/menu.jade
+		.jumbotron
+			| City Page
+			h2=person
+			h2=cityName
+			img(src='/images/'+cityName+'.jpg')
+			h3=tagline
