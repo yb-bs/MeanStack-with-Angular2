@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Leave the marks</title>
+    <title>Employee Database</title>
     <% include partials/head.ejs %>
 </head>
 
@@ -10,31 +10,75 @@
 
     <div id="wrapper">
 
-        <% include partials/sidebarMenu.ejs %>
-
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <div class="container-fluid">
+            <div class="container-fluid" ng-app="myApp" ng-controller="Controller">
                 <div class="row">
                     <div class="col-lg-12">
 
                       <p align="center" class="headingFont">
-                        Leave the marks !!!
+                        Employee Database - M.E.A.N App by YBBS
                       </p>
                       <br/>
 
-                   <blockquote class="mainLines">
-                    We believe that everyone is fighting with something and have a story to tell.
-                    That's why we created <code>leave the marks</code> foundation where people share their
-                    life changing stories.
-                  </blockquote>
 
-                  <blockquote class="mainLines">
-                    Right now when you are reading this someone is going to be operated in ICU.
-                    A mother is going to give birth to a pre-mature baby, a husband is going to see his wife for last time.
-                    A player is going to hit a home run. A student is going to fail in exams.<br/><br/> Every second creates a story
-                    and we share the best stories with you.<br/> Read the stories <a href="/stories">here</a> or <a href="/new-story">write your own story</a>
-                  </blockquote>
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <td>Name</td>
+                            <td>Email</td>
+                            <td>Date of Birth</td>
+                            <td>Department</td>
+                            <td>Gender</td>
+                            <td>Age</td>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr>
+
+                            <form>
+                              <td><input class="form-control" ng-model="employee.name"
+                                required placeholder="Name" /></td>
+                              <td><input type="email" ng-model="employee.email" required
+                                class="form-control" placeholder="abc@xyz.com" /></td>
+                              <td><input type="text" ng-model="employee.dob"
+                                id="datepicker" class="form-control" required
+                                placeholder="DD-MM-YYYY" /></td>
+                              <td><select ng-model="employee.dept" required
+                                class="form-control" placeholder="Department"><option>IT</option><option>Admin</option><option>Facilities</option><option>HR</option><option>Others</option></select>
+                              </td>
+                              <td><select ng-model="employee.gender" required
+                                class="form-control" placeholder="Gender"><option>Male</option><option>Female</option></select>
+                              </td>
+                              <td><input type="number" ng-model="employee.age" disabled
+                                class="form-control" placeholder="Age" ></input></td>
+                              <td>
+                                <button class="btn btn-success btn-md" href="/create" ng-click="addEmployee()">Add
+                                  Employee</button>
+                              <td><button class="btn btn-success btn-md" href="/update"
+                                  ng-click="updateEmployee()">Update Employee</button></td>
+                              </td>
+
+                            </form>
+                          </tr>
+                               <tr ng-repeat="employee in employees">
+                               <td>{{employee.name}}</td>
+                               <td>{{employee.email}}</td>
+                               <td>{{employee.dob}}</td>
+                               <td>{{employee.dept}}</td>
+                               <td>{{employee.gender}}</td>
+                               <td>{{employee.age}}</td><td>
+                              <button class="btn btn-danger btn-sm" href="/delete"
+                                ng-click="removeEmployee(employee.email)">Delete</button></td>
+                              <td><button class="btn btn-primary btn-sm" href="/remove"
+                                ng-click="editEmployee(employee.email)">Edit</button>
+                            </td>
+
+                        </tbody>
+
+                      </table>
+                   
 
                   </div>
            </div>
