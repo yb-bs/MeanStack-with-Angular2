@@ -4,7 +4,10 @@ var bcrypt=require('bcrypt');
 var SALT_WORK_FACTOR = 10;
 
 
+//var dbURI = 'mongodb://localhost/test';
+
 var dbURI = 'mongodb://root:root@ds159330.mlab.com:59330/yorbit201_nodejs';
+
 
 mongoose.connect(dbURI);
 
