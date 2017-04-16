@@ -10,9 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var task_service_1 = require("../../services/task.service");
-var TasksComponent = (function () {
-    function TasksComponent(taskService) {
+var employees_service_1 = require("../../services/employees.service");
+var EmployeesComponent = (function () {
+    function EmployeesComponent(taskService) {
         var _this = this;
         this.taskService = taskService;
         this.taskService.getTasks()
@@ -20,7 +20,7 @@ var TasksComponent = (function () {
             _this.tasks = tasks;
         });
     }
-    TasksComponent.prototype.addTask = function (event) {
+    EmployeesComponent.prototype.addTask = function (event) {
         var _this = this;
         event.preventDefault();
         var newTask = {
@@ -33,7 +33,7 @@ var TasksComponent = (function () {
             _this.title = '';
         });
     };
-    TasksComponent.prototype.deleteTask = function (id) {
+    EmployeesComponent.prototype.deleteTask = function (id) {
         var tasks = this.tasks;
         this.taskService.deleteTask(id).subscribe(function (data) {
             if (data.n == 1) {
@@ -45,7 +45,7 @@ var TasksComponent = (function () {
             }
         });
     };
-    TasksComponent.prototype.updateStatus = function (task) {
+    EmployeesComponent.prototype.updateStatus = function (task) {
         var _task = {
             _id: task._id,
             title: task.title,
@@ -55,15 +55,15 @@ var TasksComponent = (function () {
             task.isDone = !task.isDone;
         });
     };
-    return TasksComponent;
+    return EmployeesComponent;
 }());
-TasksComponent = __decorate([
+EmployeesComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
-        selector: 'tasks',
-        templateUrl: 'tasks.component.html'
+        selector: 'employees',
+        templateUrl: 'employees.component.html'
     }),
-    __metadata("design:paramtypes", [task_service_1.TaskService])
-], TasksComponent);
-exports.TasksComponent = TasksComponent;
-//# sourceMappingURL=tasks.component.js.map
+    __metadata("design:paramtypes", [employees_service_1.EmployeesService])
+], EmployeesComponent);
+exports.EmployeesComponent = EmployeesComponent;
+//# sourceMappingURL=employees.component.js.map
