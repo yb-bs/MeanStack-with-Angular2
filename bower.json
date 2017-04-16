@@ -1,0 +1,19 @@
+{
+  "name": "yorbit201-nodejs-bower",
+  "description": "Employee DB app",
+  "main": "server.js",
+  "authors": [
+    "yb-bs <ybbs.dev@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}
