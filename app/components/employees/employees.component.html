@@ -1,20 +1,39 @@
-<form class="well" (submit)="addTask($event)">
-      <div class="form-group">
-        <input type="text" [(ngModel)]="title" name="title" class="form-control" placeholder="Add Task...">    
-      </div>  
-</form>
+<form class="newform">
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Date of Birth</td>
+                <td>Department</td>
+                <td>Gender</td>
+                <td>Age</td>
+            </tr>
+        </thead>
 
-<div class="task-list">
-    <div *ngFor="let task of tasks">
-        <div class="col-md-1">
-            <input type="checkbox" [checked]="task.isDone" (click)="updateStatus(task)">
-        </div>
-        <div class="col-md-7">
-            {{task.title}}    
-        </div> 
-        <div class="col-md-4">
-            <input type="button" (click)="deleteTask(task._id)" value="Delete" class="btn btn-danger">    
-        </div>
-        <br><br>
-    </div>
-</div>
+        <tbody>
+            <tr>
+                <td><input class="form-control" ng-model="name" required placeholder="Name" /></td>
+                <td><input class="form-control" ng-model="email" required placeholder="abc@xyz.com" type="email" /></td>
+                <td><input class="form-control" ng-model="dob" required placeholder="DD-MM-YYYY" type="date" /></td>
+                <td><input class="form-control" ng-model="dept" required placeholder="Department" /></td>
+                <td><input class="form-control" ng-model="gender" required placeholder="Gender" /></td>
+                <td><input class="form-control" ng-model="age" required placeholder="Age" type="number" disabled /></td>
+                <!--<td><button class="btn btn-success btn-md" ng-click="addEmployee()">Add Employee</button></td>
+                <td><button class="btn btn-success btn-md" ng-click="updateEmployee()">Update Employee</button></td>-->
+            </tr>
+
+            <tr ng-repeat="emp in employee">
+                <td>{{emp.name}}</td>
+                <td>{{emp.email}}</td>
+                <td>{{emp.dob}}</td>
+                <td>{{emp.dept}}</td>
+                <td>{{emp.gender}}</td>
+                <td>{{emp.age}}</td>
+                <!--<td><button class="btn btn-danger btn-sm" ng-click="deleteEmployee(employee.email)">Delete</button></td>
+                <td><button class="btn btn-primary btn-sm" ng-click="editEmployee(employee.email)">Edit</button></td>-->
+            </tr>
+        </tbody>
+
+    </table>
+</form>

@@ -15,26 +15,26 @@ require("rxjs/add/operator/map");
 var EmployeesService = (function () {
     function EmployeesService(http) {
         this.http = http;
-        console.log('Task Service Initialized...');
+        console.log('Service Initialized...');
     }
-    EmployeesService.prototype.getTasks = function () {
-        return this.http.get('/api/tasks')
+    EmployeesService.prototype.getEmployees = function () {
+        return this.http.get('/api/employees')
             .map(function (res) { return res.json(); });
     };
-    EmployeesService.prototype.addTask = function (newTask) {
+    EmployeesService.prototype.addEmployee = function (newEmployee) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/task', JSON.stringify(newTask), { headers: headers })
+        return this.http.post('/api/employees', JSON.stringify(newEmployee), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    EmployeesService.prototype.deleteTask = function (id) {
-        return this.http.delete('/api/task/' + id)
+    EmployeesService.prototype.deleteEmployee = function (email) {
+        return this.http.delete('/api/employees/' + email)
             .map(function (res) { return res.json(); });
     };
-    EmployeesService.prototype.updateStatus = function (task) {
+    EmployeesService.prototype.updateEmployee = function (employee) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
+        return this.http.put('/api/employees/' + employee.email, JSON.stringify(employee), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     return EmployeesService;
