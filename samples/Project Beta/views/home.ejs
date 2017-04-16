@@ -22,12 +22,9 @@
                                <h1><%- stories[i].title %></h1>
                                <h4>Created by <code><%=stories[i].author%> on <%-stories[i].created_at.toUTCString()  %> </code></h4><br/><br/>
                                <p><%- stories[i].summary %>  <b>- Read the full story <a href='/stories/<%- stories[i].slug%>'>here</a> </b></p>
-
                                <br/><br/>
                            <% } %>
                         <%}%>
-
-
                     </div>
                 </div>
             </div>

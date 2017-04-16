@@ -20,12 +20,13 @@ var session=require('express-session');
 app.use(session({secret:"s3cr3t",resave: true, saveUninitialized: true}));
 
 app.get('/', employeeRouter.index);
+app.post('/create', employeeRouter.newEmployee);
+app.post('/update', employeeRouter.newEmployee);
+app.post('/delete', employeeRouter.newEmployee);
 
 // app.get('/stories',story.stories);
 
 // app.get('/register',routes.register);
-
-app.post('/create', employeeRouter.newEmployee);
 
 // app.get('/registrationSuccessful',user.registrationSuccessful);
 

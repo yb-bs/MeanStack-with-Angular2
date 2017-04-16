@@ -38,26 +38,25 @@
                           <tr>
 
                             <form>
-                              <td><input class="form-control" ng-model="employee.name"
+                              <td><input class="form-control" ng-model="name"
                                 required placeholder="Name" /></td>
-                              <td><input type="email" ng-model="employee.email" required
+                              <td><input type="email" ng-model="email" required
                                 class="form-control" placeholder="abc@xyz.com" /></td>
-                              <td><input type="text" ng-model="employee.dob"
+                              <td><input type="text" ng-model="dob"
                                 id="datepicker" class="form-control" required
                                 placeholder="DD-MM-YYYY" /></td>
-                              <td><select ng-model="employee.dept" required
+                              <td><select ng-model="dept" required
                                 class="form-control" placeholder="Department"><option>IT</option><option>Admin</option><option>Facilities</option><option>HR</option><option>Others</option></select>
                               </td>
-                              <td><select ng-model="employee.gender" required
+                              <td><select ng-model="gender" required
                                 class="form-control" placeholder="Gender"><option>Male</option><option>Female</option></select>
                               </td>
-                              <td><input type="number" ng-model="employee.age" disabled
+                              <td><input type="number" ng-model="age" disabled
                                 class="form-control" placeholder="Age" ></input></td>
                               <td>
-                                <button class="btn btn-success btn-md" href="/create" ng-click="addEmployee()">Add
+                                <button class="btn btn-success btn-md" ng-click="addEmployee()">Add
                                   Employee</button>
-                              <td><button class="btn btn-success btn-md" href="/update"
-                                  ng-click="updateEmployee()">Update Employee</button></td>
+                              <td><button class="btn btn-success btn-md" ng-click="updateEmployee()">Update Employee</button></td>
                               </td>
 
                             </form>
@@ -69,10 +68,8 @@
                                <td>{{employee.dept}}</td>
                                <td>{{employee.gender}}</td>
                                <td>{{employee.age}}</td><td>
-                              <button class="btn btn-danger btn-sm" href="/delete"
-                                ng-click="removeEmployee(employee.email)">Delete</button></td>
-                              <td><button class="btn btn-primary btn-sm" href="/remove"
-                                ng-click="editEmployee(employee.email)">Edit</button>
+                              <button class="btn btn-danger btn-sm" ng-click="removeEmployee(employee.email)">Delete</button></td>
+                              <td><button class="btn btn-primary btn-sm" ng-click="editEmployee(employee.email)">Edit</button>
                             </td>
 
                         </tbody>
