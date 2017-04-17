@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var Employee = (function () {
-    function Employee() {
+var Task = (function () {
+    function Task() {
     }
-    return Employee;
+    return Task;
 }());
-exports.Employee = Employee;
+exports.Task = Task;
 //# sourceMappingURL=Employee.js.map

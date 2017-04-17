@@ -1,8 +1,5 @@
-export class Employee{
-    name:string;
-    email: string;
-    dob: Date;
-    dept:string;
-    gender:string;
-    age:number
+export class Task{
+    _id:string;
+    title: string;
+    isDone: boolean;
 }

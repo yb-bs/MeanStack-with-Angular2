@@ -9,52 +9,53 @@ import {Employee} from '../../../Employee';
 })
 
 export class EmployeesComponent { 
-    public employee: Employee[];
-    name: string;
+    tasks: Employee[];
+    title: string;
     
-    constructor(private employeeService:EmployeesService){
-        this.employeeService.getEmployees()
-            .subscribe(employee => {
-                this.employee = employee;
+    constructor(private taskService:EmployeesService){
+        this.taskService.getTasks()
+            .subscribe(tasks => {
+                this.tasks = tasks;
             });
     }
     
-    addEmployee(event){
-        var newEmployee = {
-            name: this.name,
+    addTask(event){
+        event.preventDefault();
+        var newTask = {
+            title: this.title,
             isDone: false
         }
         
-        this.employeeService.addEmployee(newEmployee)
-            .subscribe(employee => {
-                this.employee.push(employee);
-                this.name = '';
+        this.taskService.addTask(newTask)
+            .subscribe(task => {
+                this.tasks.push(task);
+                this.title = '';
             });
     }
     
-    deleteEmployee(email){
-        var employee = this.employee;
+    deleteTask(id){
+        var tasks = this.tasks;
         
-        this.employeeService.deleteEmployee(email).subscribe(data => {
+        this.taskService.deleteTask(id).subscribe(data => {
             if(data.n == 1){
-                for(var i = 0;i < employee.length;i++){
-                    if(employee[i].email == email){
-                        employee.splice(i, 1);
+                for(var i = 0;i < tasks.length;i++){
+                    if(tasks[i]._id == id){
+                        tasks.splice(i, 1);
                     }
                 }
             }
         });
     }
     
-    updateEmployee(employee){
-        var _employee = {
-            _id:employee._id,
-            title: employee.title,
-            isDone: !employee.isDone
+    updateStatus(task){
+        var _task = {
+            _id:task._id,
+            title: task.title,
+            isDone: !task.isDone
         };
         
-        this.employeeService.updateEmployee(_employee).subscribe(data => {
-            employee.isDone = !employee.isDone;
+        this.taskService.updateStatus(_task).subscribe(data => {
+            task.isDone = !task.isDone;
         });
     }
 }

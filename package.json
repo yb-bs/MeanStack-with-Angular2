@@ -29,15 +29,15 @@
   },
   "homepage": "https://github.com/yb-bs/Yorbit201-NodeJS#readme",
   "dependencies": {
-    "@angular/common": "^2.x",
-    "@angular/compiler": "^2.x",
-    "@angular/core": "^2.x",
-    "@angular/forms": "^2.x",
-    "@angular/http": "^2.x",
-    "@angular/platform-browser": "^2.x",
-    "@angular/platform-browser-dynamic": "^2.x",
-    "@angular/router": "^3.x",
-    "@angular/upgrade": "^2.x",
+    "@angular/common": "^4.0.2",
+    "@angular/compiler": "^4.0.2",
+    "@angular/core": "^4.0.2",
+    "@angular/forms": "^4.0.2",
+    "@angular/http": "^4.0.2",
+    "@angular/platform-browser": "^4.0.2",
+    "@angular/platform-browser-dynamic": "^4.0.2",
+    "@angular/router": "^4.0.2",
+    "@angular/upgrade": "^4.0.2",
     "angular-in-memory-web-api": "^0.3.1",
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
@@ -53,7 +53,7 @@
     "rxjs": "^5.3.0",
     "systemjs": "^0.20.12",
     "typings":"^2.1.1",
-    "zone.js": "^0.7.8"
+    "zone.js": "^0.8.5"
   },
   "devDependencies": {
     "concurrently": "^3.4.0",

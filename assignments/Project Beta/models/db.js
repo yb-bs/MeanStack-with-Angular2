@@ -26,4 +26,4 @@ var employeeDB = new mongoose.Schema({
   gender: String
 });
 
-mongoose.model( 'employees', employeeDB );
+mongoose.model( 'Employees', employeeDB );

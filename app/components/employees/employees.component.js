@@ -12,46 +12,47 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var employees_service_1 = require("../../services/employees.service");
 var EmployeesComponent = (function () {
-    function EmployeesComponent(employeeService) {
+    function EmployeesComponent(taskService) {
         var _this = this;
-        this.employeeService = employeeService;
-        this.employeeService.getEmployees()
-            .subscribe(function (employee) {
-            _this.employee = employee;
+        this.taskService = taskService;
+        this.taskService.getTasks()
+            .subscribe(function (tasks) {
+            _this.tasks = tasks;
         });
     }
-    EmployeesComponent.prototype.addEmployee = function (event) {
+    EmployeesComponent.prototype.addTask = function (event) {
         var _this = this;
-        var newEmployee = {
-            name: this.name,
+        event.preventDefault();
+        var newTask = {
+            title: this.title,
             isDone: false
         };
-        this.employeeService.addEmployee(newEmployee)
-            .subscribe(function (employee) {
-            _this.employee.push(employee);
-            _this.name = '';
+        this.taskService.addTask(newTask)
+            .subscribe(function (task) {
+            _this.tasks.push(task);
+            _this.title = '';
         });
     };
-    EmployeesComponent.prototype.deleteEmployee = function (email) {
-        var employee = this.employee;
-        this.employeeService.deleteEmployee(email).subscribe(function (data) {
+    EmployeesComponent.prototype.deleteTask = function (id) {
+        var tasks = this.tasks;
+        this.taskService.deleteTask(id).subscribe(function (data) {
             if (data.n == 1) {
-                for (var i = 0; i < employee.length; i++) {
-                    if (employee[i].email == email) {
-                        employee.splice(i, 1);
+                for (var i = 0; i < tasks.length; i++) {
+                    if (tasks[i]._id == id) {
+                        tasks.splice(i, 1);
                     }
                 }
             }
         });
     };
-    EmployeesComponent.prototype.updateEmployee = function (employee) {
-        var _employee = {
-            _id: employee._id,
-            title: employee.title,
-            isDone: !employee.isDone
+    EmployeesComponent.prototype.updateStatus = function (task) {
+        var _task = {
+            _id: task._id,
+            title: task.title,
+            isDone: !task.isDone
         };
-        this.employeeService.updateEmployee(_employee).subscribe(function (data) {
-            employee.isDone = !employee.isDone;
+        this.taskService.updateStatus(_task).subscribe(function (data) {
+            task.isDone = !task.isDone;
         });
     };
     return EmployeesComponent;
