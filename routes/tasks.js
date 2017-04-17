@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
-var db = mongojs('mongodb://root:root@ds159330.mlab.com:59330/yorbit201_nodejs', ['tasks']);
+var db = mongojs('mongodb://root:root@ds159330.mlab.com:59330/yorbit201_nodejs', ['emp']);
 
 // Get All Tasks
 router.get('/tasks', function(req, res, next){
-    db.tasks.find(function(err, tasks){
+    db.emp.find(function(err, tasks){
         if(err){
             res.send(err);
         }
@@ -15,7 +15,7 @@ router.get('/tasks', function(req, res, next){
 
 // Get Single Task
 router.get('/task/:id', function(req, res, next){
-    db.tasks.findOne({_id: mongojs.ObjectId(req.params.id)}, function(err, task){
+    db.emp.findOne({_id: mongojs.ObjectId(req.params.id)}, function(err, task){
         if(err){
             res.send(err);
         }
@@ -32,7 +32,7 @@ router.post('/task', function(req, res, next){
             "error": "Bad Data"
         });
     } else {
-        db.tasks.save(task, function(err, task){
+        db.emp.save(task, function(err, task){
             if(err){
                 res.send(err);
             }
@@ -43,7 +43,7 @@ router.post('/task', function(req, res, next){
 
 // Delete Task
 router.delete('/task/:id', function(req, res, next){
-    db.tasks.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, task){
+    db.emp.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, task){
         if(err){
             res.send(err);
         }
@@ -70,7 +70,7 @@ router.put('/task/:id', function(req, res, next){
             "error":"Bad Data"
         });
     } else {
-        db.tasks.update({_id: mongojs.ObjectId(req.params.id)},updTask, {}, function(err, task){
+        db.emp.update({_id: mongojs.ObjectId(req.params.id)},updTask, {}, function(err, task){
         if(err){
             res.send(err);
         }

@@ -4,13 +4,19 @@ import {Task} from '../../../Task';
 
 @Component({
   moduleId: module.id,
-  selector: 'tasks',
+  selector: 'employees',
   templateUrl: 'tasks.component.html'
 })
 
 export class TasksComponent { 
     tasks: Task[];
     title: string;
+    name: string;
+    email: string;
+    dob: Date;
+    dept: string;
+    gender: string;
+    age: number;
     
     constructor(private taskService:TaskService){
         this.taskService.getTasks()

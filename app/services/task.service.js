@@ -21,10 +21,10 @@ var TaskService = (function () {
         return this.http.get('/api/tasks')
             .map(function (res) { return res.json(); });
     };
-    TaskService.prototype.addTask = function (newTask) {
+    TaskService.prototype.addTask = function (newEmployee) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/task', JSON.stringify(newTask), { headers: headers })
+        return this.http.post('/api/task', JSON.stringify(newEmployee), { headers: headers })
             .map(function (res) { return res.json(); });
     };
     TaskService.prototype.deleteTask = function (id) {
