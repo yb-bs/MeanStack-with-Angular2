@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import {EmployeesService} from '../../services/employees.service';
-import {Employee} from '../../../Employee';
+import {TaskService} from '../../services/task.service';
+import {Task} from '../../../Task';
 
 @Component({
   moduleId: module.id,
-  selector: 'employees',
-  templateUrl: 'employees.component.html'
+  selector: 'tasks',
+  templateUrl: 'tasks.component.html'
 })
 
-export class EmployeesComponent { 
-    tasks: Employee[];
+export class TasksComponent { 
+    tasks: Task[];
     title: string;
     
-    constructor(private taskService:EmployeesService){
+    constructor(private taskService:TaskService){
         this.taskService.getTasks()
             .subscribe(tasks => {
                 this.tasks = tasks;

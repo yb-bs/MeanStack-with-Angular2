@@ -12,36 +12,36 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
-var EmployeesService = (function () {
-    function EmployeesService(http) {
+var TaskService = (function () {
+    function TaskService(http) {
         this.http = http;
         console.log('Task Service Initialized...');
     }
-    EmployeesService.prototype.getTasks = function () {
+    TaskService.prototype.getTasks = function () {
         return this.http.get('/api/tasks')
             .map(function (res) { return res.json(); });
     };
-    EmployeesService.prototype.addTask = function (newTask) {
+    TaskService.prototype.addTask = function (newTask) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/task', JSON.stringify(newTask), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    EmployeesService.prototype.deleteTask = function (id) {
+    TaskService.prototype.deleteTask = function (id) {
         return this.http.delete('/api/task/' + id)
             .map(function (res) { return res.json(); });
     };
-    EmployeesService.prototype.updateStatus = function (task) {
+    TaskService.prototype.updateStatus = function (task) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.put('/api/task/' + task._id, JSON.stringify(task), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    return EmployeesService;
+    return TaskService;
 }());
-EmployeesService = __decorate([
+TaskService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])
-], EmployeesService);
-exports.EmployeesService = EmployeesService;
-//# sourceMappingURL=employees.service.js.map
+], TaskService);
+exports.TaskService = TaskService;
+//# sourceMappingURL=task.service.js.map

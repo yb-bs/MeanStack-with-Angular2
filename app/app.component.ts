@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import {EmployeesService} from './services/employees.service';
+import {TaskService} from './services/task.service';
 
 @Component({
   moduleId: module.id,
   selector: 'my-app',
   templateUrl: 'app.component.html',
-  providers:[EmployeesService]
+  providers:[TaskService]
 })
 
 export class AppComponent { }
