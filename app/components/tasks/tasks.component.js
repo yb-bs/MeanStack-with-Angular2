@@ -18,27 +18,31 @@ var TasksComponent = (function () {
         this.taskService.getTasks()
             .subscribe(function (tasks) {
             _this.tasks = tasks;
+            _this.age = new Date().getDate() - _this.dob.getDate();
+            console.log("Age : " + _this.age);
         });
     }
-    TasksComponent.prototype.addTask = function (event) {
+    TasksComponent.prototype.addEmployee = function () {
         var _this = this;
-        event.preventDefault();
-        var newTask = {
-            title: this.title,
-            isDone: false
+        var newEmployee = {
+            name: this.name,
+            email: this.email,
+            dob: this.dob,
+            dept: this.dept,
+            gender: this.gender
         };
-        this.taskService.addTask(newTask)
+        this.taskService.addTask(newEmployee)
             .subscribe(function (task) {
             _this.tasks.push(task);
-            _this.title = '';
+            _this.email = '';
         });
     };
-    TasksComponent.prototype.deleteTask = function (id) {
+    TasksComponent.prototype.deleteTask = function (email) {
         var tasks = this.tasks;
-        this.taskService.deleteTask(id).subscribe(function (data) {
+        this.taskService.deleteTask(email).subscribe(function (data) {
             if (data.n == 1) {
                 for (var i = 0; i < tasks.length; i++) {
-                    if (tasks[i]._id == id) {
+                    if (tasks[i].email == email) {
                         tasks.splice(i, 1);
                     }
                 }

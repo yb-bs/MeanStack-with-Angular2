@@ -27,8 +27,8 @@ var TaskService = (function () {
         return this.http.post('/api/task', JSON.stringify(newEmployee), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    TaskService.prototype.deleteTask = function (id) {
-        return this.http.delete('/api/task/' + id)
+    TaskService.prototype.deleteTask = function (email) {
+        return this.http.delete('/api/task/' + email)
             .map(function (res) { return res.json(); });
     };
     TaskService.prototype.updateStatus = function (task) {

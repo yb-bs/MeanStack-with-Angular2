@@ -20,8 +20,8 @@ export class TaskService{
             .map(res => res.json());
     }
     
-    deleteTask(id){
-        return this.http.delete('/api/task/'+id)
+    deleteTask(email){
+        return this.http.delete('/api/task/'+email)
             .map(res => res.json());
     }
     
