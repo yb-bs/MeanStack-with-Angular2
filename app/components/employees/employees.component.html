@@ -1,10 +1,4 @@
-<form class="well" (submit)="addTask($event)">
-    <div class="form-group">
-        <input type="text" [(ngModel)]="title" name="title" class="form-control" placeholder="Add Task...">
-    </div>
-</form>
-
-<div class="task-list">
+<div class="employees">
     <table>
         <thead>
             <tr>
@@ -20,26 +14,26 @@
             <tr>
                 <td><input class="form-control" [(ngModel)]="name" required placeholder="Name" /></td>
                 <td><input class="form-control" [(ngModel)]="email" required placeholder="abc@xyz.com" type="email" /></td>
-                <td><input class="form-control" [(ngModel)]="dob" required placeholder="yyyy-MM-dd" type="date" /></td>
+                <td><input class="form-control" [(ngModel)]="dob" required placeholder="dd-MM-yyyy" type="date" /></td>
                 <td><input class="form-control" [(ngModel)]="dept" required placeholder="Department" /></td>
                 <td><input class="form-control" [(ngModel)]="gender" required placeholder="Gender" /></td>
                 <td><input class="form-control" [(ngModel)]="age" required placeholder="Age" type="number" disabled /></td>
                 <td><button class="btn btn-success btn-md" (click)="addEmployee()">Add Employee</button></td>
                 <td><button class="btn btn-success btn-md" (click)="updateStatus()">Update Employee</button></td>
             </tr>
-            <tr *ngFor="let task of tasks">
-                <td>{{task.name}}</td>
-                <td>{{task.email}}</td>
-                <td>{{task.dob}}</td>
-                <td>{{task.dept}}</td>
-                <td>{{task.gender}}</td>
-                <td>{{task.age}}</td>
-                <td><input type="button" (click)="editTask(task.email)" value="Edit" class="btn btn-primary"></td>
-                <td><input type="button" (click)="deleteTask(task.email)" value="Delete" class="btn btn-danger"></td>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.name}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.dob}}</td>
+                <td>{{employee.dept}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employee.age}}</td>
+                <td><input type="button" (click)="updateEmployee(employee.email)" value="Edit" class="btn btn-primary"></td>
+                <td><input type="button" (click)="deleteEmployee(employee.email)" value="Delete" class="btn btn-danger"></td>
             </tr>
         </tbody>
     </table>
-    <div *ngFor="let task of tasks">
+    <!--<div *ngFor="let task of tasks">
 
         <div class="col-md-1">
             <input type="checkbox" [checked]="task.isDone" (click)="updateStatus(task)">
@@ -51,5 +45,5 @@
             <input type="button" (click)="deleteTask(task._id)" value="Delete" class="btn btn-danger">
         </div>
         <br><br>
-    </div>
+    </div>-->
 </div>

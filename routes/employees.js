@@ -3,19 +3,19 @@ var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://root:root@ds159330.mlab.com:59330/yorbit201_nodejs', ['emp']);
 
-// Get All Tasks
-router.get('/tasks', function (req, res, next) {
-    db.emp.find(function (err, tasks) {
+// Get All Employees
+router.get('/employees', function (req, res, next) {
+    db.emp.find(function (err, employees) {
         if (err) {
             res.send(err);
         }
-        res.json(tasks);
+        res.json(employees);
     });
 });
 
 // Get Single Task
-router.get('/task/:id', function (req, res, next) {
-    db.emp.findOne({ _id: mongojs.ObjectId(req.params.id) }, function (err, task) {
+router.get('/employee/:email', function (req, res, next) {
+    db.emp.findOne({ email: mongojs.ObjectId(req.params.id) }, function (err, task) {
         if (err) {
             res.send(err);
         }
@@ -24,7 +24,7 @@ router.get('/task/:id', function (req, res, next) {
 });
 
 //Save Employee
-router.post('/task', function (req, res, next) {
+router.post('/employee', function (req, res, next) {
     var employee = req.body;
     if (!employee.email) {
         res.status(400);
@@ -42,7 +42,7 @@ router.post('/task', function (req, res, next) {
 });
 
 // Delete Task
-router.delete('/task/:email', function (req, res, next) {
+router.delete('/employee/:email', function (req, res, next) {
     console.log("Email delete : " + req.params.email)
     db.emp.remove({ $where: "email" == req.params.email }, function (err, employee) {
         if (err) {
@@ -53,7 +53,7 @@ router.delete('/task/:email', function (req, res, next) {
 });
 
 // Update Task
-router.put('/task/:id', function (req, res, next) {
+router.put('/employee/:email', function (req, res, next) {
     var task = req.body;
     var updTask = {};
 
