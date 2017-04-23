@@ -46,7 +46,7 @@ router.post('/employee', function (req, res, next) {
 // Delete Employee
 router.delete('/employee/:email', function (req, res, next) {
     console.log("Email delete : " + req.params.email)
-    EmployeeDB.findOneAndRemove({ $where: "email" == req.params.email }, function (err, employee) {
+    EmployeeDB.remove({ email : req.params.email }, function (err, employee) {
         if (err) {
             res.send(err);
         }
