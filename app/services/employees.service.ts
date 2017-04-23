@@ -5,10 +5,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EmployeeService {
     constructor(private http: Http) {
-        console.log('Task Service Initialized...');
+        console.log('Employee Service Initialized...');
     }
 
-    getTasks() {
+    getEmployees() {
         return this.http.get('/api/employees')
             .map(res => res.json());
     }

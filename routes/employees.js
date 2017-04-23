@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('mongodb://root:root@ds159330.mlab.com:59330/yorbit201_nodejs', ['emp']);
+var mongoose = require('mongoose');
+var EmployeeDB = mongoose.model('EmployeeDB', EmployeeDB, 'emp');
 
 // Get All Employees
 router.get('/employees', function (req, res, next) {
-    db.emp.find(function (err, employees) {
+    EmployeeDB.find({}, function (err, employees) {
         if (err) {
             res.send(err);
         }
@@ -13,15 +15,15 @@ router.get('/employees', function (req, res, next) {
     });
 });
 
-// Get Single Task
-router.get('/employee/:email', function (req, res, next) {
-    db.emp.findOne({ email: mongojs.ObjectId(req.params.id) }, function (err, task) {
+// Get Single Employee
+/*router.get('/employee/:email', function (req, res, next) {
+    EmployeeDB.findOne({ email: mongojs.ObjectId(req.params.email) }, function (err, employee) {
         if (err) {
             res.send(err);
         }
-        res.json(task);
+        res.json(employee);
     });
-});
+});*/
 
 //Save Employee
 router.post('/employee', function (req, res, next) {
@@ -41,10 +43,10 @@ router.post('/employee', function (req, res, next) {
     }
 });
 
-// Delete Task
+// Delete Employee
 router.delete('/employee/:email', function (req, res, next) {
     console.log("Email delete : " + req.params.email)
-    db.emp.remove({ $where: "email" == req.params.email }, function (err, employee) {
+    EmployeeDB.findOneAndRemove({ $where: "email" == req.params.email }, function (err, employee) {
         if (err) {
             res.send(err);
         }
@@ -52,30 +54,28 @@ router.delete('/employee/:email', function (req, res, next) {
     });
 });
 
-// Update Task
+// Update Employee
 router.put('/employee/:email', function (req, res, next) {
-    var task = req.body;
-    var updTask = {};
+    var employee = req.body;
+    var updatedEmployee = {};
 
-    if (task.isDone) {
-        updTask.isDone = task.isDone;
-    }
+    updatedEmployee.name = employee.name;
+    updatedEmployee.email = employee.email;
+    updatedEmployee.dob = employee.dob;
+    updatedEmployee.dept = employee.dept;
+    updatedEmployee.gender = employee.gender;
 
-    if (task.title) {
-        updTask.title = task.title;
-    }
-
-    if (!updTask) {
+    if (!updatedEmployee) {
         res.status(400);
         res.json({
             "error": "Bad Data"
         });
     } else {
-        db.emp.update({ _id: mongojs.ObjectId(req.params.id) }, updTask, {}, function (err, task) {
+        EmployeeDB.findOneAndUpdate({ email: req.params.email }, updatedEmployee, {}, function (err, task) {
             if (err) {
                 res.send(err);
             }
-            res.json(task);
+            res.json(employee);
         });
     }
 });

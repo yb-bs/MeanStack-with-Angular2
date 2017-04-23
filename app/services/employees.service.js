@@ -15,9 +15,9 @@ require("rxjs/add/operator/map");
 var EmployeeService = (function () {
     function EmployeeService(http) {
         this.http = http;
-        console.log('Task Service Initialized...');
+        console.log('Employee Service Initialized...');
     }
-    EmployeeService.prototype.getTasks = function () {
+    EmployeeService.prototype.getEmployees = function () {
         return this.http.get('/api/employees')
             .map(function (res) { return res.json(); });
     };

@@ -19,7 +19,7 @@
                 <td><input class="form-control" [(ngModel)]="gender" required placeholder="Gender" /></td>
                 <td><input class="form-control" [(ngModel)]="age" required placeholder="Age" type="number" disabled /></td>
                 <td><button class="btn btn-success btn-md" (click)="addEmployee()">Add Employee</button></td>
-                <td><button class="btn btn-success btn-md" (click)="updateStatus()">Update Employee</button></td>
+                <td><button class="btn btn-success btn-md" (click)="updateEmployee()">Update Employee</button></td>
             </tr>
             <tr *ngFor="let employee of employees">
                 <td>{{employee.name}}</td>

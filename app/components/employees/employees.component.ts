@@ -18,7 +18,7 @@ export class EmployeesComponent {
     age: number;
 
     constructor(private employeeService: EmployeeService) {
-        this.employeeService.getTasks()
+        this.employeeService.getEmployees()
             .subscribe(employees => {
                 this.employees = employees;
                 // this.age = new Date().getDate() - this.dob.getDate();

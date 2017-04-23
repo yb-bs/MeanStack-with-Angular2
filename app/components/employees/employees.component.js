@@ -15,7 +15,7 @@ var EmployeesComponent = (function () {
     function EmployeesComponent(employeeService) {
         var _this = this;
         this.employeeService = employeeService;
-        this.employeeService.getTasks()
+        this.employeeService.getEmployees()
             .subscribe(function (employees) {
             _this.employees = employees;
             // this.age = new Date().getDate() - this.dob.getDate();

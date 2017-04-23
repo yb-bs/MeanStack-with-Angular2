@@ -33,4 +33,5 @@ var employeeSchema = new mongoose.Schema({
 
 // Build the User model
 
-mongoose.model( 'EmployeeDB', employeeSchema);
+var EmployeeDB = mongoose.model( 'EmployeeDB', employeeSchema);
+module.exports = EmployeeDB;
