@@ -84,8 +84,9 @@ export class EmployeesComponent {
             gender: this.gender
         }
 
-        this.employeeService.updateEmployee(employee).subscribe(data => {
+        this.employeeService.updateEmployee(employee).subscribe(employees => {
             this.email = '';
+            this.employees = employees;
         });
     }
 }

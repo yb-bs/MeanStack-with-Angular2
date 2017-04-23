@@ -74,8 +74,9 @@ var EmployeesComponent = (function () {
             dept: this.dept,
             gender: this.gender
         };
-        this.employeeService.updateEmployee(employee).subscribe(function (data) {
+        this.employeeService.updateEmployee(employee).subscribe(function (employees) {
             _this.email = '';
+            _this.employees = employees;
         });
     };
     return EmployeesComponent;
