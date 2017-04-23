@@ -13,6 +13,11 @@ export class EmployeeService {
             .map(res => res.json());
     }
 
+    editEmployee(email) {
+        return this.http.get('/api/employee/' + email)
+            .map(res => res.json());
+    }
+
     addEmployee(newEmployee) {
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');

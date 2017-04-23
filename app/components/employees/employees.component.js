@@ -18,10 +18,13 @@ var EmployeesComponent = (function () {
         this.employeeService.getEmployees()
             .subscribe(function (employees) {
             _this.employees = employees;
-            // this.age = new Date().getDate() - this.dob.getDate();
+            // this.age = this.dob.getDate() - new Date().getDate();
             console.log("Age : " + _this.age);
         });
     }
+    EmployeesComponent.prototype.employeeAge = function (employeeDob) {
+        return new Date().getUTCFullYear() - new Date(employeeDob).getUTCFullYear();
+    };
     EmployeesComponent.prototype.addEmployee = function () {
         var _this = this;
         var newEmployee = {
@@ -36,6 +39,19 @@ var EmployeesComponent = (function () {
             _this.employees.push(newEmployee);
             _this.email = '';
         });
+    };
+    EmployeesComponent.prototype.editEmployee = function (email) {
+        var _this = this;
+        this.empemail = this.email;
+        this.employeeService.editEmployee(email)
+            .subscribe(function (employee) {
+            _this.name = employee.name;
+            _this.email = employee.email;
+            _this.dob = employee.dob;
+            _this.dept = employee.dept;
+            _this.gender = employee.gender;
+        });
+        return this.employee;
     };
     EmployeesComponent.prototype.deleteEmployee = function (email) {
         var employees = this.employees;
@@ -64,6 +80,14 @@ var EmployeesComponent = (function () {
     };
     return EmployeesComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", String)
+], EmployeesComponent.prototype, "empemail", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", core_1.EventEmitter)
+], EmployeesComponent.prototype, "employee", void 0);
 EmployeesComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

@@ -24,26 +24,13 @@
             <tr *ngFor="let employee of employees">
                 <td>{{employee.name}}</td>
                 <td>{{employee.email}}</td>
-                <td>{{employee.dob}}</td>
+                <td>{{employee.dob | date: 'dd-MM-yyyy' }}</td>
                 <td>{{employee.dept}}</td>
                 <td>{{employee.gender}}</td>
-                <td>{{employee.age}}</td>
-                <td><input type="button" (click)="updateEmployee(employee.email)" value="Edit" class="btn btn-primary"></td>
+                <td>{{employeeAge(employee.dob)}}</td>
+                <td><input type="button" (click)="editEmployee(employee.email)" value="Edit" class="btn btn-primary"></td>
                 <td><input type="button" (click)="deleteEmployee(employee.email)" value="Delete" class="btn btn-danger"></td>
             </tr>
         </tbody>
     </table>
-    <!--<div *ngFor="let task of tasks">
-
-        <div class="col-md-1">
-            <input type="checkbox" [checked]="task.isDone" (click)="updateStatus(task)">
-        </div>
-        <div class="col-md-7">
-            {{task.title}} {{task.email}}
-        </div>
-        <div class="col-md-4">
-            <input type="button" (click)="deleteTask(task._id)" value="Delete" class="btn btn-danger">
-        </div>
-        <br><br>
-    </div>-->
 </div>

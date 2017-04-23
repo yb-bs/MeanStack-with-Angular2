@@ -16,14 +16,14 @@ router.get('/employees', function (req, res, next) {
 });
 
 // Get Single Employee
-/*router.get('/employee/:email', function (req, res, next) {
-    EmployeeDB.findOne({ email: mongojs.ObjectId(req.params.email) }, function (err, employee) {
+router.get('/employee/:email', function (req, res, next) {
+    EmployeeDB.findOne({ email: req.params.email }, function (err, employee) {
         if (err) {
             res.send(err);
         }
         res.json(employee);
     });
-});*/
+});
 
 //Save Employee
 router.post('/employee', function (req, res, next) {
@@ -71,7 +71,7 @@ router.put('/employee/:email', function (req, res, next) {
             "error": "Bad Data"
         });
     } else {
-        EmployeeDB.findOneAndUpdate({ email: req.params.email }, updatedEmployee, {}, function (err, task) {
+        EmployeeDB.findOneAndUpdate({ email: employee.email }, updatedEmployee, { new: true }, function (err, employee) {
             if (err) {
                 res.send(err);
             }

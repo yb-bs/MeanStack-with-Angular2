@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../../services/employees.service';
 import { Employee } from '../../../Employee';
 
@@ -9,6 +9,8 @@ import { Employee } from '../../../Employee';
 })
 
 export class EmployeesComponent {
+    @Input() empemail: String;
+    @Output() employee: EventEmitter<Employee>;
     employees: Employee[];
     name: string;
     email: string;
@@ -21,9 +23,13 @@ export class EmployeesComponent {
         this.employeeService.getEmployees()
             .subscribe(employees => {
                 this.employees = employees;
-                // this.age = new Date().getDate() - this.dob.getDate();
+                // this.age = this.dob.getDate() - new Date().getDate();
                 console.log("Age : " + this.age)
             });
+    }
+
+    employeeAge(employeeDob) {
+        return new Date().getUTCFullYear() - new Date(employeeDob).getUTCFullYear();
     }
 
     addEmployee() {
@@ -40,6 +46,19 @@ export class EmployeesComponent {
                 this.employees.push(newEmployee);
                 this.email = '';
             });
+    }
+
+    editEmployee(email) {
+        this.empemail = this.email;
+        this.employeeService.editEmployee(email)
+            .subscribe(employee => {
+                this.name = employee.name;
+                this.email = employee.email;
+                this.dob = employee.dob;
+                this.dept = employee.dept;
+                this.gender = employee.gender;
+            });
+        return this.employee;
     }
 
     deleteEmployee(email) {

@@ -21,6 +21,10 @@ var EmployeeService = (function () {
         return this.http.get('/api/employees')
             .map(function (res) { return res.json(); });
     };
+    EmployeeService.prototype.editEmployee = function (email) {
+        return this.http.get('/api/employee/' + email)
+            .map(function (res) { return res.json(); });
+    };
     EmployeeService.prototype.addEmployee = function (newEmployee) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
