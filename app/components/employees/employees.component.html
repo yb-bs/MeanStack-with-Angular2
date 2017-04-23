@@ -1,0 +1,36 @@
+<div class="employees">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>DOB</th>
+                <th>Department</th>
+                <th>Gender</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input class="form-control" [(ngModel)]="name" required placeholder="Name" /></td>
+                <td><input class="form-control" [(ngModel)]="email" required placeholder="abc@xyz.com" type="email" /></td>
+                <td><input class="form-control" [(ngModel)]="dob" required placeholder="dd-MM-yyyy" type="date" /></td>
+                <td><input class="form-control" [(ngModel)]="dept" required placeholder="Department" /></td>
+                <td><input class="form-control" [(ngModel)]="gender" required placeholder="Gender" /></td>
+                <td><input class="form-control" [(ngModel)]="age" required placeholder="Age" type="number" disabled /></td>
+                <td><button class="btn btn-success btn-md" (click)="addEmployee()">Add Employee</button></td>
+                <td><button class="btn btn-success btn-md" (click)="updateEmployee()">Update Employee</button></td>
+            </tr>
+            <tr *ngFor="let employee of employees">
+                <td>{{employee.name}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.dob | date: 'dd-MM-yyyy' }}</td>
+                <td>{{employee.dept}}</td>
+                <td>{{employee.gender}}</td>
+                <td>{{employeeAge(employee.dob)}}</td>
+                <td><input type="button" (click)="editEmployee(employee.email)" value="Edit" class="btn btn-primary"></td>
+                <td><input type="button" (click)="deleteEmployee(employee.email)" value="Delete" class="btn btn-danger"></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
