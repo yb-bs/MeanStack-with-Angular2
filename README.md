@@ -1,3 +1,2 @@
-# Yorbit201-NodeJS
-Yorbit 201
-This is a project done for learning purposes of NodeJS, MongoDB, Angular2.
+# Mean Stack app with Angular 2
+Simple MEAN stack app with MongoDB, Express JS, Angular 2 and Node JS.
